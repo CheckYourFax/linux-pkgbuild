@@ -1,6 +1,6 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux
+pkgbase=linux-zen4
 pkgver=6.16.4.arch1
 pkgrel=1
 pkgdesc='Linux'
@@ -49,12 +49,12 @@ sha256sums=('d6a5e3c71a10b533a756251387cc8bf48bbd5c76d842ba5e957d8b1c316ab622'
             'SKIP'
             'bbb122a7ab583e548e10a459588ca8aeb0efe7112a9c1e5e7155f8f88d1f2fa1'
             'SKIP'
-            '33e7e35af5a1a9d937aa54865c79cd2fc0f2834e9db9f7ba171e3bb93f19e552')
+            'cbcd8e429c14b7a519d87d72cba8e769783062fdea3fa770a9f6d471a9d028aa')
 b2sums=('251feef2f995c155850eac2fce5b89f37f39e9f13b6a4e6873370fdc69654692c6bf6c92f04ca7c0b5fd6088d74442afb68db71d2cc18691e23c61b0be714f34'
         'SKIP'
         'fc43e6e57889aac4d401c0c4d1dd0f1e7c534de99ca25f928624c8bba842102f6c17ee74e8d7353cc71fc3655db24ca0c5097eb0b89e90d6eec1820d5302d28d'
         'SKIP'
-        '8e28d86a7621302a27c9c817d07d2d7186c3702a458bb21a955cf6cf2a8a52d64e9570b4a43415b575bc85674041baf46f42085602854d74021efe8337dcac2d')
+        'e54cb164fc36172d1274c43ceb7d6c453a0c552895971cbd215290c5717b2c9ed6e43e831bbdd33d4c0a091fdf379c5349d295c3ba76065c5a5902be0887c31a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -90,7 +90,6 @@ build() {
   cd $_srcname
   make all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
-  make htmldocs SPHINXOPTS=-QT
 }
 
 _package() {
@@ -248,7 +247,6 @@ _package-docs() {
 pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
-  "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
